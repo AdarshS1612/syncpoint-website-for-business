@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Syncpoint Compliance — SOC 2, done right</title>
+<meta name="description" content="Syncpoint runs the whole SOC 2 compliance program for engineering-led teams: scope, risks, policies, evidence, review, and readiness.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://syncpoint.in/">
+<style>
+
+:root {
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-primary-active: #4338ca;
+  --color-primary-soft: #eef2ff;
+  --color-primary-text: #4338ca;
+  --color-accent: #8b5cf6;
+  --color-bg: #f5f7fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-border: #e5e9f0;
+  --color-border-strong: #cbd5e1;
+  --color-divider: #eef1f5;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-body: #cbd5e1;
+  --color-text-on-dark-muted: #94a3b8;
+  --gradient-hero: linear-gradient(135deg, #0b1220 0%, #1e1b4b 55%, #4c1d95 100%);
+  --gradient-brand: linear-gradient(135deg, #6366f1, #8b5cf6);
+  --color-success: #10b981;
+  --color-success-soft: #ecfdf5;
+  --color-success-border: #a7f3d0;
+  --color-success-text: #047857;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+  --shadow-soft: 0 16px 42px rgba(15, 23, 42, .08);
+  --shadow-card: 0 10px 30px rgba(30, 41, 59, .06);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+[id] { scroll-margin-top: 92px; }
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+button, input, select, textarea { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid rgba(99, 102, 241, .48); outline-offset: 3px; }
+.skip-link {
+  position: fixed; left: 16px; top: 12px; z-index: 100;
+  padding: 10px 14px; border-radius: 8px; background: var(--color-primary);
+  color: white; transform: translateY(-160%); transition: transform .2s ease;
+}
+.skip-link:focus { transform: translateY(0); }
+.site-header {
+  position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(229,233,240,.86);
+  background: rgba(255,255,255,.9); backdrop-filter: blur(16px);
+}
+.nav-inner, .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+.nav-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-weight: 750; letter-spacing: -.035em; }
+.brand img { width: 32px; height: 32px; }
+.brand-wordmark { font-size: 16px; }
+.brand-wordmark span { color: var(--color-primary); }
+.nav-links { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+.nav-links a { color: var(--color-text-secondary); font-size: 14px; font-weight: 600; transition: color .2s ease; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--color-primary-text); }
+.nav-cta, .button-primary, .button-dark {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; cursor: pointer;
+  padding: 12px 18px; border-radius: var(--radius-full); font-weight: 700; font-size: 14px;
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.nav-cta, .button-primary { color: white; background: var(--color-primary); box-shadow: 0 8px 18px rgba(99,102,241,.2); }
+.nav-cta:hover, .button-primary:hover { background: var(--color-primary-hover); transform: translateY(-2px); box-shadow: 0 12px 22px rgba(99,102,241,.25); }
+.button-dark { background: rgba(255,255,255,.12); color: white; border: 1px solid rgba(255,255,255,.22); }
+.button-dark:hover { background: rgba(255,255,255,.2); transform: translateY(-2px); }
+.mobile-toggle { display: none; border: 0; background: transparent; color: var(--color-text); cursor: pointer; padding: 7px; }
+.mobile-menu { display: none; }
+.hero { position: relative; overflow: hidden; background: var(--gradient-hero); color: white; }
+.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; filter: blur(2px); }
+.hero::before { width: 500px; height: 500px; right: -150px; top: -250px; background: rgba(139,92,246,.22); }
+.hero::after { width: 420px; height: 420px; left: -220px; bottom: -280px; background: rgba(99,102,241,.16); }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(40px, 7vw, 100px); align-items: center; padding: 94px 0 100px; }
+.eyebrow, .section-kicker { text-transform: uppercase; letter-spacing: .14em; font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+.eyebrow { color: #c4b5fd; margin: 0 0 20px; }
+.hero h1 { max-width: 720px; margin: 0; font-family: var(--font-display); font-size: clamp(42px, 5.7vw, 76px); font-weight: 400; line-height: .98; letter-spacing: -.045em; text-wrap: balance; }
+.hero h1 strong { color: #c4b5fd; font-weight: 700; }
+.hero-copy { max-width: 630px; margin: 26px 0 0; color: var(--color-text-on-dark-body); font-size: 17px; line-height: 1.72; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; }
+.hero-trust { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 30px; }
+.trust-chip { padding: 8px 11px; border: 1px solid rgba(255,255,255,.16); border-radius: 5px; color: #dbeafe; background: rgba(255,255,255,.07); font-size: 11px; }
+.hero-art { position: relative; min-height: 410px; display: grid; place-items: center; }
+.orbit { position: absolute; width: 360px; height: 360px; border: 1px solid rgba(196,181,253,.3); border-radius: 50%; transform: rotate(-17deg); }
+.orbit::before, .orbit::after { content: ""; position: absolute; width: 8px; height: 8px; border-radius: 50%; background: #a78bfa; box-shadow: 0 0 0 7px rgba(167,139,250,.12); }
+.orbit::before { top: 43px; left: 76px; } .orbit::after { bottom: 62px; right: 42px; background: #67e8f9; box-shadow: 0 0 0 7px rgba(103,232,249,.12); }
+.control-card { position: relative; width: min(100%, 390px); border: 1px solid rgba(255,255,255,.18); border-radius: 15px; padding: 22px; background: rgba(15,23,42,.68); box-shadow: 0 28px 70px rgba(0,0,0,.25); backdrop-filter: blur(10px); }
+.control-card-top { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.12); padding-bottom: 16px; }
+.control-card-title { display: flex; align-items: center; gap: 9px; font-family: var(--font-display); font-weight: 650; }
+.control-card-title i { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 8px; background: rgba(129,140,248,.2); color: #c4b5fd; font-style: normal; font-size: 12px; }
+.live-dot { display: inline-flex; gap: 6px; align-items: center; color: #86efac; font: 11px var(--font-mono); }
+.live-dot::before { content: ""; width: 6px; height: 6px; background: #34d399; border-radius: 50%; }
+.card-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.08); color: #dbeafe; font-size: 13px; }
+.card-row:last-child { border: 0; padding-bottom: 0; }
+.status-pill { display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; color: #a7f3d0; background: rgba(16,185,129,.14); border-radius: 99px; font: 10px var(--font-mono); white-space: nowrap; }
+.status-pill::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #34d399; }
+.section { padding: 100px 0; }
+.section-tight { padding: 76px 0; }
+.section-muted { background: var(--color-surface-muted); }
+.section-dark { background: #111827; color: white; }
+.section-kicker { color: var(--color-primary-text); margin: 0 0 15px; }
+.section-dark .section-kicker { color: #a5b4fc; }
+.section h2 { margin: 0; max-width: 700px; font-family: var(--font-display); font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.04; letter-spacing: -.035em; text-wrap: balance; }
+.section-intro { max-width: 650px; margin: 18px 0 0; color: var(--color-text-secondary); line-height: 1.7; font-size: 16px; }
+.section-dark .section-intro { color: #cbd5e1; }
+.split { display: grid; grid-template-columns: .85fr 1.15fr; gap: 70px; align-items: start; }
+.split.reverse { grid-template-columns: 1.15fr .85fr; }
+.pipeline { border: 1px solid var(--color-border); border-radius: var(--radius-xl); background: var(--color-surface); box-shadow: var(--shadow-card); overflow: hidden; }
+.pipeline-head { padding: 19px 22px; border-bottom: 1px solid var(--color-divider); font: 11px var(--font-mono); color: var(--color-text-muted); }
+.pipeline-list { display: grid; grid-template-columns: repeat(5, 1fr); padding: 26px 20px 30px; }
+.pipeline-step { position: relative; text-align: center; }
+.pipeline-step:not(:last-child)::after { content: ""; position: absolute; left: calc(50% + 22px); top: 18px; width: calc(100% - 44px); height: 1px; background: #c7d2fe; }
+.pipeline-icon { position: relative; z-index: 1; margin: 0 auto 12px; width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid #c7d2fe; border-radius: 50%; color: var(--color-primary); background: #eef2ff; font: 12px var(--font-mono); }
+.pipeline-step strong { display: block; font-size: 12px; color: var(--color-text); }
+.pipeline-step span { display: block; margin-top: 5px; font-size: 11px; color: var(--color-text-muted); }
+.feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 48px; }
+.feature-card { min-height: 260px; padding: 25px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); box-shadow: var(--shadow-card); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.feature-card:hover { transform: translateY(-5px); border-color: #c7d2fe; box-shadow: var(--shadow-soft); }
+.feature-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; color: var(--color-primary); background: var(--color-primary-soft); font: 12px var(--font-mono); }
+.feature-card h3 { margin: 20px 0 9px; font-family: var(--font-display); font-size: 19px; letter-spacing: -.03em; }
+.feature-card p { margin: 0; color: var(--color-text-secondary); line-height: 1.65; font-size: 14px; }
+.honesty { display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center; }
+.honesty blockquote { margin: 0; padding: 30px 0 30px 30px; border-left: 2px solid #818cf8; font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); font-weight: 400; line-height: 1.2; letter-spacing: -.025em; color: white; }
+.honesty code, .mono { font-family: var(--font-mono); }
+.cta-panel { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 48px; border-radius: var(--radius-2xl); background: var(--gradient-brand); color: white; overflow: hidden; }
+.cta-panel h2 { max-width: 570px; font-size: clamp(30px, 4vw, 46px); }
+.cta-panel p { max-width: 500px; margin: 14px 0 0; color: #e0e7ff; line-height: 1.6; }
+.page-hero { padding: 80px 0 76px; border-bottom: 1px solid var(--color-border); background: radial-gradient(circle at 80% 10%, #ede9fe 0, transparent 35%), var(--color-bg); }
+.page-hero h1 { max-width: 790px; margin: 0; font: 400 clamp(42px, 6vw, 68px)/1 var(--font-display); letter-spacing: -.04em; text-wrap: balance; }
+.page-hero p { max-width: 680px; margin: 20px 0 0; color: var(--color-text-secondary); font-size: 18px; line-height: 1.65; }
+.page-layout { display: grid; grid-template-columns: 190px 1fr; gap: 74px; }
+.side-index { position: sticky; top: 105px; align-self: start; display: grid; gap: 12px; border-left: 1px solid var(--color-border-strong); padding-left: 16px; }
+.side-index a { color: var(--color-text-muted); font-size: 12px; font-weight: 600; } .side-index a:hover { color: var(--color-primary-text); }
+.rich-copy { max-width: 780px; }
+.rich-copy h2 { margin: 0 0 20px; font-size: 30px; }
+.rich-copy h3 { margin: 38px 0 10px; font: 600 21px var(--font-display); letter-spacing: -.025em; }
+.rich-copy p, .rich-copy li { color: var(--color-text-secondary); line-height: 1.75; }
+.rich-copy ul { padding-left: 20px; }
+.visual-mock { min-height: 315px; padding: 26px; border: 1px solid var(--color-border); border-radius: var(--radius-xl); background: var(--color-surface); box-shadow: var(--shadow-card); }
+.mock-label { color: var(--color-text-muted); font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .1em; }
+.mock-bars { display: grid; gap: 13px; margin-top: 24px; }
+.mock-bar { display: grid; grid-template-columns: 118px 1fr 45px; gap: 12px; align-items: center; font-size: 11px; }
+.bar-track { height: 8px; border-radius: 99px; background: #eef2f7; overflow: hidden; } .bar-fill { height: 100%; border-radius: inherit; background: var(--gradient-brand); }
+.mock-table { margin-top: 21px; border: 1px solid var(--color-divider); border-radius: 9px; overflow: hidden; }
+.mock-table-row { display: grid; grid-template-columns: 1fr 100px 75px; gap: 12px; padding: 12px; border-bottom: 1px solid var(--color-divider); font-size: 11px; } .mock-table-row:last-child { border: 0; }
+.mock-table-row span { color: var(--color-text-secondary); } .mock-table-row .good { color: var(--color-success-text); }
+.product-block { display: grid; grid-template-columns: .9fr 1.1fr; gap: 70px; align-items: center; padding: 84px 0; border-bottom: 1px solid var(--color-divider); }
+.product-block.reverse { grid-template-columns: 1.1fr .9fr; } .product-block:last-child { border: 0; }
+.product-block h2 { margin: 12px 0 15px; font: 400 31px/1.12 var(--font-display); letter-spacing: -.03em; text-wrap: balance; }
+.product-block p { color: var(--color-text-secondary); line-height: 1.72; }
+.product-block .section-kicker { margin: 0; }
+.accordion { margin-top: 50px; border-top: 1px solid var(--color-border); }
+.accordion-item { border-bottom: 1px solid var(--color-border); }
+.accordion-button { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 22px 0; border: 0; background: transparent; text-align: left; cursor: pointer; font: 600 17px var(--font-sans); color: var(--color-text); }
+.accordion-button svg { color: var(--color-primary); transition: transform .2s ease; } .accordion-button[aria-expanded="true"] svg { transform: rotate(180deg); }
+.accordion-panel { max-width: 700px; padding: 0 0 22px; color: var(--color-text-secondary); line-height: 1.7; }
+.security-callout { margin: 28px 0 0; padding: 24px 26px; border: 1px solid var(--color-warning); border-radius: var(--radius-lg); background: #fffbeb; color: #78350f; line-height: 1.65; }
+.security-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 44px; }
+.security-card { padding: 26px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--color-surface); }
+.security-card h2 { margin: 16px 0 9px; font: 400 21px var(--font-display); letter-spacing: -.02em; } .security-card p { margin: 0; color: var(--color-text-secondary); line-height: 1.65; font-size: 14px; }
+.about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 82px; align-items: start; }
+.about-mark { min-height: 360px; display: grid; place-items: center; border-radius: var(--radius-2xl); background: var(--gradient-hero); color: white; }
+.about-mark img { width: 88px; height: 88px; border-radius: 22px; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+.contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: start; }
+.contact-aside h2 { margin: 0; font: 400 36px/1.06 var(--font-display); letter-spacing: -.03em; text-wrap: balance; }
+.contact-aside p { color: var(--color-text-secondary); line-height: 1.7; }
+.contact-points { display: grid; gap: 16px; margin-top: 30px; } .contact-point { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--color-text-secondary); } .contact-point b { display: block; margin-bottom: 2px; color: var(--color-text); }
+.form-card { padding: 32px; border: 1px solid var(--color-border); border-radius: var(--radius-xl); background: var(--color-surface); box-shadow: var(--shadow-soft); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; } .form-field { display: grid; gap: 7px; } .form-field.full { grid-column: 1 / -1; }
+.form-field label { font-size: 13px; font-weight: 700; } .form-field input, .form-field select, .form-field textarea { width: 100%; border: 1px solid var(--color-border-strong); border-radius: 8px; padding: 12px 13px; color: var(--color-text); background: #fbfcfe; transition: border-color .2s ease, box-shadow .2s ease; }
+.form-field textarea { min-height: 122px; resize: vertical; } .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(99,102,241,.13); outline: 0; }
+.form-help { margin: 4px 0 0; color: var(--color-text-muted); font-size: 12px; } .form-error { color: #b91c1c; font-size: 13px; } .form-success { display: grid; gap: 12px; padding: 24px; color: var(--color-success-text); border: 1px solid var(--color-success-border); border-radius: 10px; background: var(--color-success-soft); }
+.honeypot { position: absolute; left: -9999px; opacity: 0; } .form-submit { margin-top: 23px; } .mailto { color: var(--color-primary-text); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.legal-layout { max-width: 780px; margin: 0 auto; } .legal-layout h2 { margin-top: 40px; font-size: 25px; } .legal-layout p { color: var(--color-text-secondary); line-height: 1.8; }
+.site-footer { padding: 62px 0 28px; border-top: 1px solid var(--color-border); background: var(--color-surface); }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; } .footer-brand p { max-width: 260px; color: var(--color-text-secondary); font-size: 13px; line-height: 1.6; }
+.footer-col h2 { margin: 3px 0 15px; font: 700 12px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--color-text-muted); } .footer-col a { display: block; width: fit-content; margin: 9px 0; color: var(--color-text-secondary); font-size: 13px; } .footer-col a:hover { color: var(--color-primary-text); }
+.footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 38px; margin-top: 38px; border-top: 1px solid var(--color-divider); color: var(--color-text-muted); font-size: 12px; }
+@media (max-width: 900px) {
+  .hero-grid, .split, .split.reverse, .product-block, .product-block.reverse, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+  .hero-art { min-height: 350px; } .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .page-layout { grid-template-columns: 1fr; gap: 35px; } .side-index { position: static; display: flex; flex-wrap: wrap; border: 0; padding: 0; gap: 15px; }
+}
+@media (max-width: 720px) {
+  .nav-inner, .container { width: min(100% - 28px, 1180px); } .nav-inner { min-height: 66px; }
+  .nav-links, .nav-cta { display: none; } .mobile-toggle { display: inline-flex; }
+  .mobile-menu { position: absolute; left: 14px; right: 14px; top: 67px; display: grid; gap: 5px; padding: 12px; border: 1px solid var(--color-border); border-radius: 12px; background: rgba(255,255,255,.98); box-shadow: var(--shadow-soft); }
+  .mobile-menu a { padding: 12px; border-radius: 7px; font-size: 14px; font-weight: 650; } .mobile-menu a:hover { background: var(--color-primary-soft); color: var(--color-primary-text); }
+  .hero-grid { padding: 70px 0 78px; } .hero h1 { font-size: clamp(40px, 12vw, 61px); } .hero-copy { font-size: 15px; } .hero-art { min-height: 300px; } .orbit { width: 270px; height: 270px; } .control-card { width: min(100%, 340px); padding: 17px; }
+  .section { padding: 72px 0; } .section-tight { padding: 56px 0; } .section h2 { font-size: 36px; } .pipeline-list { grid-template-columns: 1fr; gap: 18px; padding: 20px; } .pipeline-step { display: grid; grid-template-columns: 36px 1fr; gap: 10px; text-align: left; align-items: center; } .pipeline-step:not(:last-child)::after { left: 17px; top: 36px; height: calc(100% + 2px); width: 1px; } .pipeline-icon { margin: 0; grid-row: span 2; } .pipeline-step span { margin: 0; }
+  .feature-grid, .security-grid, .form-grid { grid-template-columns: 1fr; } .form-field.full { grid-column: auto; } .form-card { padding: 22px; } .cta-panel, .honesty { grid-template-columns: 1fr; display: grid; padding: 30px 24px; gap: 18px; } .honesty blockquote { padding-left: 20px; } .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } .footer-bottom { display: block; } .footer-bottom span { display: block; margin-top: 8px; }
+  .page-hero { padding: 62px 0 56px; } .page-hero h1 { font-size: 46px; } .product-block { padding: 62px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+/* Standalone build additions */
+.logo-data{display:block;width:32px;height:32px}
+.icon{width:20px;height:20px;display:inline-block;vertical-align:middle}
+button:disabled{opacity:.65;cursor:not-allowed}
+.mobile-menu.is-open{display:grid}
+</style>
+</head>
+<body>
+<header class="site-header">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="nav-inner">
+<a href="#top" class="brand"><img class="logo-data" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic3luY3BvaW50R3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjM2NmYxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNzeW5jcG9pbnRHcmFkaWVudCkiLz4KICA8cGF0aCBkPSJNOSAyMCBMMTYgOCBMMjMgMjAgTDE5IDIwIEwxNiAxNCBMMTMgMjAgWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=" alt="Syncpoint"><span class="brand-wordmark">Syncpoint <span>Compliance</span></span></a>
+<nav class="nav-links" aria-label="Primary navigation"><a href="#product">Product</a><a href="#security">Security</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+<a href="#contact" class="nav-cta">Request a demo <span>→</span></a>
+<button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+</div>
+<nav id="mobileNavigation" class="mobile-menu" aria-label="Mobile navigation"><a href="#product">Product</a><a href="#security">Security</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#contact" class="button-primary">Request a demo →</a></nav>
+</header>
+<main id="main-content"><div id="top">
+<section class="hero"><div class="container hero-grid"><div><p class="eyebrow">SOC 2 compliance, done right</p><h1>The complete path to a real <strong>SOC 2 report</strong> — not just an evidence inbox.</h1><p class="hero-copy">Syncpoint runs your whole compliance program: scope and kickoff, risk assessment, policies, continuous evidence collection, and an auditor-ready readiness report — all in one place, built for engineering-led teams doing their first SOC 2 audit.</p><div class="hero-actions"><a href="#contact" class="button-primary">Request a demo →</a><a href="#how-it-works" class="button-dark">See how it works</a></div><div class="hero-trust"><span class="trust-chip">Human-in-the-loop AI</span><span class="trust-chip">Multi-tenant, encrypted by design</span><span class="trust-chip">Runs in your cloud or ours.</span></div></div><div class="hero-art" aria-label="Syncpoint compliance program overview"><div class="orbit"></div><div class="control-card"><div class="control-card-top"><div class="control-card-title"><i>SP</i><span>Readiness control room</span></div><span class="live-dot">LIVE</span></div><div class="card-row"><span>Evidence coverage</span><span class="status-pill">On track</span></div><div class="card-row"><span>Open control gaps</span><span class="mono">07</span></div><div class="card-row"><span>Last human review</span><span class="mono">Today, 09:42</span></div><div class="card-row"><span>Report state</span><span class="status-pill">Reviewable</span></div></div></div></div></section>
+<section id="how-it-works" class="section"><div class="container split"><div><p class="section-kicker">The problem</p><h2>Compliance work should not disappear into a spreadsheet.</h2><p class="section-intro">Traditional SOC 2 preparation takes 3–6 months of Slack messages, screenshot hunting, and spreadsheets that go stale. Syncpoint gives the work a system of record.</p></div><div class="pipeline"><div class="pipeline-head">PROGRAM STATE / SOC2_READINESS</div><div class="pipeline-list"><div class="pipeline-step"><div class="pipeline-icon">01</div><div><strong>Connect</strong><span>Systems</span></div></div><div class="pipeline-step"><div class="pipeline-icon">02</div><div><strong>Collect</strong><span>Evidence</span></div></div><div class="pipeline-step"><div class="pipeline-icon">03</div><div><strong>Map</strong><span>Controls</span></div></div><div class="pipeline-step"><div class="pipeline-icon">04</div><div><strong>Review</strong><span>Human sign-off</span></div></div><div class="pipeline-step"><div class="pipeline-icon">05</div><div><strong>Export</strong><span>CPA artifact</span></div></div></div></div></div></section>
+<section class="section section-muted"><div class="container"><p class="section-kicker">The complete program</p><h2>Every moving part, connected.</h2><div class="feature-grid">
+<article class="feature-card"><div class="feature-icon mono">01</div><h3>Guided SOC 2 kickoff</h3><p>Trust Services Category scoping, Type I vs. Type II selection with observation-period tracking, and a structured system-description builder.</p></article><article class="feature-card"><div class="feature-icon mono">02</div><h3>Risk register (CC3)</h3><p>Score likelihood × impact, assign owners, link risks to mitigating controls, and track remediation.</p></article><article class="feature-card"><div class="feature-icon mono">03</div><h3>Continuous evidence automation</h3><p>Deterministic collectors for GitHub, AWS, and Jira pull real evidence on a schedule; no AI guessing at facts an API can provide.</p></article><article class="feature-card"><div class="feature-icon mono">04</div><h3>AI-assisted mapping, human-confirmed</h3><p>AI proposes control mappings with cited reasoning; a human reviewer makes the final call, and both steps are logged.</p></article><article class="feature-card"><div class="feature-icon mono">05</div><h3>Policy management</h3><p>Upload, version, and track staff acknowledgment of required policies mapped to the controls they support.</p></article><article class="feature-card"><div class="feature-icon mono">06</div><h3>Auditor-ready readiness report</h3><p>Coverage, open gaps, the risk register, and logged control exceptions in one artifact for a CPA firm.</p></article></div></div></section>
+<section class="section section-dark"><div class="container honesty"><div><p class="section-kicker">Built on honesty</p><h2>Automation with a clear line of accountability.</h2></div><blockquote>Every AI suggestion is labeled <code>AI_SUGGESTED</code> until a human confirms it. Nothing in your audit trail pretends a human didn’t make the final call.</blockquote></div></section>
+<section class="section"><div class="container"><div class="cta-panel"><div><h2>See it on your own systems.</h2><p>Bring the questions your team is asking about scope, evidence, and the path to your first report.</p></div><a href="#contact" class="button-dark">Request a demo →</a></div></div></section>
+<section id="product" class="page-hero"><div class="container"><p class="section-kicker">Product</p><h1>A compliance program your engineering team can actually run.</h1><p>Syncpoint connects the decisions, evidence, people, and review trail behind a SOC 2 readiness program.</p></div></section>
+<section class="section-tight"><div class="container"><div class="pipeline"><div class="pipeline-head">PROGRAM STATE / SOC2_READINESS</div><div class="pipeline-list">{''.join(f'<div class="pipeline-step"><div class="pipeline-icon">{i:02d}</div><div><strong>{a}</strong><span>{b}</span></div></div>' for i,(a,b) in enumerate([('Connect','Systems'),('Collect','Evidence'),('Map','Controls'),('Review','Human sign-off'),('Export','CPA artifact')],1))}</div></div></div></section>
+<section class="container">
+<article class="product-block "><div><p class="section-kicker">01 / Scope first</p><h2>Start with a system description that can hold up.</h2><p>Choose your Trust Services Categories, decide between Type I and Type II, and make the observation period visible from kickoff. Syncpoint keeps the scope decision connected to the controls and evidence that follow.</p></div><div class="visual-mock"><span class="mock-label">Control coverage / current view</span><div class="mock-bars"><div class="mock-bar"><span>CC1 / Control environment</span><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div><span class="mono">84%</span></div><div class="mock-bar"><span>CC3 / Risk assessment</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div><span class="mono">71%</span></div><div class="mock-bar"><span>CC6 / Access controls</span><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div><span class="mono">93%</span></div><div class="mock-bar"><span>CC7 / Operations</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="mono">62%</span></div></div></div></article><article class="product-block reverse"><div><p class="section-kicker">02 / Evidence with provenance</p><h2>Collect what your systems actually know.</h2><p>Connect GitHub, AWS, and Jira to pull deterministic evidence on a schedule. Each artifact carries its source and timestamp, so a reviewer can follow the trail without hunting through old threads.</p></div><div class="visual-mock"><span class="mock-label">Evidence ledger / latest activity</span><div class="mock-table"><div class="mock-table-row"><span>AWS IAM access review</span><span class="mono">source_1</span><span class="good">Collected</span></div><div class="mock-table-row"><span>GitHub branch protection</span><span class="mono">source_2</span><span class="good">Collected</span></div><div class="mock-table-row"><span>Jira change ticket sample</span><span class="mono">source_3</span><span class="good">Collected</span></div></div></div></article><article class="product-block "><div><p class="section-kicker">03 / Human confirmation</p><h2>Let AI suggest. Keep people in the loop.</h2><p>AI can propose a mapping and show its reasoning. A human reviewer confirms or rejects it. Both steps are recorded, giving your team a faster starting point without blurring who made the decision.</p></div><div class="visual-mock"><span class="mock-label">Mapping review / pending decision</span><div class="mock-table"><div class="mock-table-row"><span>CC6.1 / Logical access</span><span class="mono">AI_SUGGESTED</span><span class="good">Review</span></div><div class="mock-table-row"><span>CC7.2 / Change management</span><span class="mono">AI_SUGGESTED</span><span class="good">Review</span></div><div class="mock-table-row"><span>CC8.1 / Data retention</span><span class="mono">AI_SUGGESTED</span><span class="good">Review</span></div></div></div></article><article class="product-block reverse"><div><p class="section-kicker">04 / Export with context</p><h2>Give your auditor a coherent readiness view.</h2><p>See coverage, open gaps, the risk register, and logged control exceptions in one artifact. The output reflects the work your team did—without claiming the work is finished when it is not.</p></div><div class="visual-mock"><span class="mock-label">Control coverage / current view</span><div class="mock-bars"><div class="mock-bar"><span>CC1 / Control environment</span><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div><span class="mono">84%</span></div><div class="mock-bar"><span>CC3 / Risk assessment</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div><span class="mono">71%</span></div><div class="mock-bar"><span>CC6 / Access controls</span><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div><span class="mono">93%</span></div><div class="mock-bar"><span>CC7 / Operations</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="mono">62%</span></div></div></div></article></section><section class="section"><div class="container"><div class="cta-panel"><div><h2>Start with the work in front of you.</h2><p>We will show you how Syncpoint maps to your systems and your audit timeline.</p></div><a href="#contact" class="button-dark">Request a demo →</a></div></div></section>
+<section id="security" class="page-hero"><div class="container"><p class="section-kicker">Security</p><h1>Trust is a system property, not a badge.</h1><p>Syncpoint is designed to make the security and accountability around your compliance work visible.</p></div></section>
+<section class="section"><div class="container"><div class="security-callout"><strong>Important:</strong> Syncpoint helps you prepare for and maintain a SOC 2 report. Using Syncpoint does not itself make your company SOC 2 compliant, and Syncpoint is not currently SOC 2 certified. We'll update this page the moment that changes.</div><div class="security-grid">
+<article class="security-card"><span style="font-size:24px;color:var(--color-primary)">◈</span><h2>Multi-tenant isolation</h2><p>Tenant-scoped queries are filtered by organization ID.</p></article><article class="security-card"><span style="font-size:24px;color:var(--color-primary)">▣</span><h2>Encrypted secrets at rest</h2><p>Envelope encryption protects stored AWS, GitHub, and Jira credentials.</p></article><article class="security-card"><span style="font-size:24px;color:var(--color-primary)">♙</span><h2>Role-based access control</h2><p>Owner, Admin, Reviewer, and Viewer roles support deliberate access.</p></article><article class="security-card"><span style="font-size:24px;color:var(--color-primary)">✓</span><h2>Full audit log</h2><p>Actions, AI suggestions, and human confirmations are recorded.</p></article></div><div class="page-layout" style="margin-top:90px"><aside class="side-index"><a href="#boundaries">Boundaries</a><a href="#deployment">Deployment</a><a href="#questions">Questions</a></aside><div class="rich-copy"><h2 id="boundaries">Security claims with boundaries.</h2><p>We publish the product facts we can stand behind. Syncpoint does not claim a SOC 2 report, ISO 27001 certification, or any compliance badge. Your organization’s controls, evidence, and auditor remain essential to the result.</p><h3 id="deployment">Your deployment model</h3><p>Syncpoint is multi-tenant SaaS by default. For customers who do not want cloud credentials to leave their network, a single-container self-hosted appliance option exists. Talk to us about which model fits your architecture.</p><h3 id="questions">Have a specific question?</h3><p>Bring your security review questions to a demo. We will answer from the available product facts rather than fill gaps with promises.</p><a href="#contact" class="button-primary">Talk to the team →</a></div></div></div></section>
+<section id="about" class="page-hero"><div class="container"><p class="section-kicker">About Syncpoint</p><h1>Built for the people doing the work behind the report.</h1><p>Syncpoint exists for engineering-led teams who want a clear, honest system for getting their first SOC 2 program moving.</p></div></section>
+<section class="section"><div class="container about-grid"><div class="about-mark"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic3luY3BvaW50R3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjM2NmYxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNzeW5jcG9pbnRHcmFkaWVudCkiLz4KICA8cGF0aCBkPSJNOSAyMCBMMTYgOCBMMjMgMjAgTDE5IDIwIEwxNiAxNCBMMTMgMjAgWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=" alt="Syncpoint mark"></div><div class="rich-copy"><p class="section-kicker">A placeholder founding story</p><h2>Compliance should feel like engineering work, not archaeology.</h2><p>We watched engineering teams burn a quarter on SOC 2 evidence-wrangling and built the tool we wished existed.</p><p>That means treating scope as a decision, evidence as a traceable input, review as a human responsibility, and the final report as an output of the work—not the place where the work starts.</p><p>We are keeping this story intentionally simple until there is a real founder story to tell.</p><a href="#contact" class="button-primary">Meet Syncpoint in a demo →</a></div></div></section>
+<section id="contact" class="page-hero"><div class="container"><p class="section-kicker">Request a demo</p><h1>Bring the messy part. We will bring a clear starting point.</h1><p>Tell us where your SOC 2 program stands, what systems matter, and what you need to see before moving forward.</p></div></section>
+<section class="section"><div class="container contact-grid"><div class="contact-aside"><h2>A focused conversation, not a sales maze.</h2><p>We will talk through scope, evidence, human review, and the deployment model that makes sense for your team.</p><div class="contact-points"><div class="contact-point"><span style="color:var(--color-success);font-size:19px">✓</span><span><b>Talk in specifics</b>Share your systems and audit context.</span></div><div class="contact-point"><span style="color:var(--color-success);font-size:19px">✓</span><span><b>Leave with a map</b>Understand a sensible next step.</span></div><div class="contact-point"><span style="color:var(--color-success);font-size:19px">✓</span><span><b>No invented proof</b>We will be direct about what Syncpoint does and does not claim.</span></div></div></div><div class="form-card"><form id="demo-form"><input type="hidden" name="access_key" value="b7b6de69-ed69-4c25-808d-098983cc26a2"><input type="hidden" name="subject" value="New demo request — Syncpoint website"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" class="honeypot"><div class="form-grid"><div class="form-field"><label for="name">Full name</label><input id="name" type="text" name="name" required autocomplete="name"></div><div class="form-field"><label for="email">Work email</label><input id="email" type="email" name="email" required autocomplete="email"></div><div class="form-field"><label for="company">Company name</label><input id="company" type="text" name="company" required autocomplete="organization"></div><div class="form-field"><label for="company-size">Company size</label><select id="company-size" name="company_size"><option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option></select></div><div class="form-field full"><label for="message">What are you hoping to solve?</label><textarea id="message" name="message"></textarea><p class="form-help">A sentence or two is plenty.</p></div></div><button id="submitButton" type="submit" class="button-primary form-submit">Request a demo →</button><p id="formStatus" class="form-help" role="status"></p><p class="form-help">Your message is sent securely through Web3Forms.</p><p class="form-help"><a class="mailto" href="mailto:hello@syncpoint.in">Prefer email? Reach us directly.</a></p></form></div></div></section>
+<section id="privacy" class="section"><div class="container legal-layout"><p class="section-kicker">Privacy Policy</p><h2>Privacy that respects the work.</h2><p><strong>Effective date: September 8, 2026</strong></p><p>This Privacy Policy explains how Syncpoint Compliance (“Syncpoint,” “we,” “us,” or “our”) collects, uses, shares, and protects information when you visit <a href="https://syncpoint.in/">syncpoint.in</a>, submit a demo request, or contact us through the website (the “Site”). By using the Site, you acknowledge this Policy. If you do not agree with it, please do not use the Site.</p><h3>Information we collect</h3><p><strong>Information you provide.</strong> When you request a demo or contact us, we collect the information you choose to submit, such as your name, work email address, company name, company size, and message. Please do not submit passwords, access keys, credentials, or sensitive personal information through the form.</p><p><strong>Information collected automatically.</strong> Our hosting and security systems may receive basic technical information such as your IP address, browser type, device type, referring page, requested pages, and the date and time of a request. We use this information to deliver, secure, troubleshoot, and understand the performance of the Site.</p><p><strong>Cookies.</strong> The Site does not use advertising cookies or sell browsing activity to advertisers. Our hosting or security providers may use strictly necessary technologies to operate and protect the Site.</p><h3>How we use information</h3><p>We use information to respond to demo and contact requests; provide information about Syncpoint; operate, maintain, and improve the Site; detect, prevent, and investigate fraud, abuse, and security incidents; comply with legal obligations; and enforce our <a href="#terms">Terms of Service</a>. We do not use information submitted through the Site to make automated decisions that produce legal or similarly significant effects.</p><h3>How we share information</h3><p>We may share information with service providers that help us host, secure, operate, and deliver the Site or contact form. These providers may process information only to provide services to us and under appropriate confidentiality and security obligations. We may also disclose information when required by law, to protect rights and safety, or as part of a merger, acquisition, financing, or sale of assets. We do not sell personal information or share it for cross-context behavioral advertising.</p><h3>Retention and security</h3><p>We retain contact information for as long as needed to respond to your request, maintain our business relationship, comply with legal obligations, resolve disputes, and enforce our agreements. We use reasonable administrative, technical, and organizational safeguards designed to protect information. No internet transmission or storage system is completely secure, so we cannot guarantee absolute security.</p><h3>Your choices and rights</h3><p>You may ask us to access, correct, delete, or stop using personal information that you submitted, subject to applicable law and legitimate retention needs. You may also opt out of non-essential communications by following the instructions in the message or contacting us. Depending on where you live, you may have additional privacy rights, including the right to lodge a complaint with your local data protection authority. To make a request, email <a class="mailto" href="mailto:hello@syncpoint.in">hello@syncpoint.in</a>. We may need to verify your request before acting on it.</p><h3>Children’s privacy</h3><p>The Site is intended for business users and is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided information to us, please contact us so we can take appropriate action.</p><h3>International visitors and changes</h3><p>Your information may be processed in countries other than the one where you live, including countries where our service providers operate. Where required, we use appropriate safeguards for those transfers. We may update this Policy from time to time by posting a new version on this page and changing the effective date. If you have questions about this Policy, contact <a class="mailto" href="mailto:hello@syncpoint.in">hello@syncpoint.in</a>.</p></div></section>
+<section id="terms" class="section"><div class="container legal-layout"><p class="section-kicker">Terms of Service</p><h2>Terms that keep the work clear.</h2><p><strong>Effective date: September 8, 2026</strong></p><p>These Terms of Service (“Terms”) govern your access to the Syncpoint Compliance website at <a href="https://syncpoint.in/">syncpoint.in</a> and any request for information or a product demonstration made through it (together, the “Site”). The Site is operated by Syncpoint Compliance (“Syncpoint,” “we,” “us,” or “our”). By using the Site, you agree to these Terms. If you do not agree, please do not use the Site.</p><h3>1. Informational use</h3><p>The Site provides general information about Syncpoint and its compliance software. It is not a contract for software, consulting, audit, legal advice, or any other professional service. Syncpoint does not provide legal advice, does not perform audits, and does not guarantee that use of its software will result in a SOC 2 report, certification, or any particular compliance outcome.</p><h3>2. Separate customer agreements</h3><p>If you purchase or use a Syncpoint product or service, your use will be governed by a separate written agreement, order form, or other terms provided for that product or service. If those terms conflict with these Terms, the product-specific terms control for that product or service. These Terms do not grant you access to any product that is not made available to you under a separate agreement.</p><h3>3. Acceptable use</h3><p>You may use the Site only for lawful purposes and in a way that does not harm the Site or interfere with another person’s use of it. You may not attempt to gain unauthorized access, probe or test the Site’s security, introduce malicious code, scrape the Site in a way that burdens our systems, impersonate another person, or use information from the Site to mislead others.</p><h3>4. Intellectual property</h3><p>The Site, including its text, design, graphics, logos, software, and other content, is owned by Syncpoint or its licensors and is protected by applicable intellectual property laws. We grant you a limited, non-exclusive, non-transferable, revocable license to view the Site for your internal, lawful use. You may not copy, modify, distribute, sell, or create derivative works from Site content without our prior written permission. “Syncpoint” and related marks are our trademarks or the trademarks of our licensors.</p><h3>5. Communications and submissions</h3><p>When you submit a demo request or contact message, you represent that the information is accurate and that you have the right to provide it. You authorize us to use that information to respond to your request and communicate with you about Syncpoint. Do not submit passwords, credentials, sensitive personal information, or confidential information through the Site form. The <a href="#privacy">Privacy Policy</a> explains how we handle information submitted through the Site.</p><h3>6. Third-party services and links</h3><p>The Site may link to third-party websites or use third-party services to deliver forms or other functionality. Those third parties have their own terms and privacy practices, and Syncpoint is not responsible for their content, availability, or practices. A link does not imply our endorsement.</p><h3>7. Disclaimers</h3><p>To the fullest extent permitted by law, the Site and its content are provided “as is” and “as available.” Syncpoint disclaims all warranties, express or implied, including warranties of accuracy, merchantability, fitness for a particular purpose, non-infringement, and uninterrupted or error-free operation. We may change, suspend, or discontinue any part of the Site at any time.</p><h3>8. Limitation of liability</h3><p>To the fullest extent permitted by law, Syncpoint and its officers, employees, contractors, and licensors will not be liable for indirect, incidental, special, consequential, exemplary, or punitive damages, or for loss of profits, revenue, data, goodwill, or business opportunities, arising from or related to your use of, or inability to use, the Site. Nothing in these Terms excludes or limits liability that cannot lawfully be excluded or limited.</p><h3>9. Changes and contact</h3><p>We may update these Terms from time to time. The updated version will be posted on this page with a revised effective date, and your continued use of the Site after an update means you accept the updated Terms. Questions about these Terms can be sent to <a class="mailto" href="mailto:hello@syncpoint.in">hello@syncpoint.in</a>.</p></div></section>
+</div></main>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="#top" class="brand"><img class="logo-data" src="data:image/svg+xml;base64,{logo}" alt="Syncpoint"><span class="brand-wordmark">Syncpoint <span>Compliance</span></span></a><p>Compliance infrastructure for engineering-led teams preparing for a real SOC 2 report.</p></div><div class="footer-col"><h2>Product</h2><a href="#product">Product</a><a href="#security">Security</a></div><div class="footer-col"><h2>Company</h2><a href="#about">About</a><a href="#contact">Contact</a></div><div class="footer-col"><h2>Legal</h2><a href="#privacy">Privacy Policy</a><a href="#terms">Terms of Service</a><a href="#security">Security</a></div></div><div class="footer-bottom"><span>© 2026 Syncpoint Compliance. All rights reserved.</span><span class="mono">Built for the work behind the report.</span></div></div></footer>
+<script>
+const toggle=document.getElementById('mobileToggle'), menu=document.getElementById('mobileNavigation');
+toggle.addEventListener('click',()=>{{const open=menu.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰';}});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{{menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';}}));
+const form=document.getElementById('demo-form'), status=document.getElementById('formStatus'), btn=document.getElementById('submitButton');
+form.addEventListener('submit',async e=>{{e.preventDefault();btn.disabled=true;btn.textContent='Sending…';status.textContent='Sending…';try{{const r=await fetch('https://api.web3forms.com/submit',{{method:'POST',headers:{{Accept:'application/json'}},body:new FormData(form)}});const j=await r.json();if(!r.ok||!j.success)throw new Error();form.innerHTML='<div class="form-success" role="status"><strong>Thanks — we\'ll reply within one business day.</strong><span>We have your note and will get back to you within one business day.</span></div>'}}catch(err){{btn.disabled=false;btn.textContent='Request a demo →';status.className='form-error';status.textContent='Something went wrong. Please try again or email us directly.'}}}});
+</script>
+</body></html>
