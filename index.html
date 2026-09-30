@@ -226,6 +226,8 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .icon{width:20px;height:20px;display:inline-block;vertical-align:middle}
 button:disabled{opacity:.65;cursor:not-allowed}
 .mobile-menu.is-open{display:grid}
+html{scroll-behavior:smooth}
+[id]{scroll-margin-top:90px}
 </style>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic3luY3BvaW50R3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjM2NmYxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNzeW5jcG9pbnRHcmFkaWVudCkiLz4KICA8cGF0aCBkPSJNOSAyMCBMMTYgOCBMMjMgMjAgTDE5IDIwIEwxNiAxNCBMMTMgMjAgWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=">
 </head>
@@ -248,7 +250,11 @@ button:disabled{opacity:.65;cursor:not-allowed}
 <section class="section section-dark"><div class="container honesty"><div><p class="section-kicker">Built on honesty</p><h2>Automation with a clear line of accountability.</h2></div><blockquote>Every AI suggestion is labeled <code>AI_SUGGESTED</code> until a human confirms it. Nothing in your audit trail pretends a human didn’t make the final call.</blockquote></div></section>
 <section class="section"><div class="container"><div class="cta-panel"><div><h2>See it on your own systems.</h2><p>Bring the questions your team is asking about scope, evidence, and the path to your first report.</p></div><a href="#contact" class="button-dark">Request a demo →</a></div></div></section>
 <section id="product" class="page-hero"><div class="container"><p class="section-kicker">Product</p><h1>A compliance program your engineering team can actually run.</h1><p>Syncpoint connects the decisions, evidence, people, and review trail behind a SOC 2 readiness program.</p></div></section>
-<section class="section-tight"><div class="container"><div class="pipeline"><div class="pipeline-head">PROGRAM STATE / SOC2_READINESS</div><div class="pipeline-list">{''.join(f'<div class="pipeline-step"><div class="pipeline-icon">{i:02d}</div><div><strong>{a}</strong><span>{b}</span></div></div>' for i,(a,b) in enumerate([('Connect','Systems'),('Collect','Evidence'),('Map','Controls'),('Review','Human sign-off'),('Export','CPA artifact')],1))}</div></div></div></section>
+<section class="section-tight"><div class="container"><div class="pipeline"><div class="pipeline-head">PROGRAM STATE / SOC2_READINESS</div><div class="pipeline-list"><div class="pipeline-step"><div class="pipeline-icon">01</div><div><strong>Connect</strong><span>Systems</span></div></div>
+<div class="pipeline-step"><div class="pipeline-icon">02</div><div><strong>Collect</strong><span>Evidence</span></div></div>
+<div class="pipeline-step"><div class="pipeline-icon">03</div><div><strong>Map</strong><span>Controls</span></div></div>
+<div class="pipeline-step"><div class="pipeline-icon">04</div><div><strong>Review</strong><span>Human sign-off</span></div></div>
+<div class="pipeline-step"><div class="pipeline-icon">05</div><div><strong>Export</strong><span>CPA artifact</span></div></div></div></div></div></section>
 <section class="container">
 <article class="product-block "><div><p class="section-kicker">01 / Scope first</p><h2>Start with a system description that can hold up.</h2><p>Choose your Trust Services Categories, decide between Type I and Type II, and make the observation period visible from kickoff. Syncpoint keeps the scope decision connected to the controls and evidence that follow.</p></div><div class="visual-mock"><span class="mock-label">Control coverage / current view</span><div class="mock-bars"><div class="mock-bar"><span>CC1 / Control environment</span><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div><span class="mono">84%</span></div><div class="mock-bar"><span>CC3 / Risk assessment</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div><span class="mono">71%</span></div><div class="mock-bar"><span>CC6 / Access controls</span><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div><span class="mono">93%</span></div><div class="mock-bar"><span>CC7 / Operations</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="mono">62%</span></div></div></div></article><article class="product-block reverse"><div><p class="section-kicker">02 / Evidence with provenance</p><h2>Collect what your systems actually know.</h2><p>Connect GitHub, AWS, and Jira to pull deterministic evidence on a schedule. Each artifact carries its source and timestamp, so a reviewer can follow the trail without hunting through old threads.</p></div><div class="visual-mock"><span class="mock-label">Evidence ledger / latest activity</span><div class="mock-table"><div class="mock-table-row"><span>AWS IAM access review</span><span class="mono">source_1</span><span class="good">Collected</span></div><div class="mock-table-row"><span>GitHub branch protection</span><span class="mono">source_2</span><span class="good">Collected</span></div><div class="mock-table-row"><span>Jira change ticket sample</span><span class="mono">source_3</span><span class="good">Collected</span></div></div></div></article><article class="product-block "><div><p class="section-kicker">03 / Human confirmation</p><h2>Let AI suggest. Keep people in the loop.</h2><p>AI can propose a mapping and show its reasoning. A human reviewer confirms or rejects it. Both steps are recorded, giving your team a faster starting point without blurring who made the decision.</p></div><div class="visual-mock"><span class="mock-label">Mapping review / pending decision</span><div class="mock-table"><div class="mock-table-row"><span>CC6.1 / Logical access</span><span class="mono">AI_SUGGESTED</span><span class="good">Review</span></div><div class="mock-table-row"><span>CC7.2 / Change management</span><span class="mono">AI_SUGGESTED</span><span class="good">Review</span></div><div class="mock-table-row"><span>CC8.1 / Data retention</span><span class="mono">AI_SUGGESTED</span><span class="good">Review</span></div></div></div></article><article class="product-block reverse"><div><p class="section-kicker">04 / Export with context</p><h2>Give your auditor a coherent readiness view.</h2><p>See coverage, open gaps, the risk register, and logged control exceptions in one artifact. The output reflects the work your team did—without claiming the work is finished when it is not.</p></div><div class="visual-mock"><span class="mock-label">Control coverage / current view</span><div class="mock-bars"><div class="mock-bar"><span>CC1 / Control environment</span><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div><span class="mono">84%</span></div><div class="mock-bar"><span>CC3 / Risk assessment</span><div class="bar-track"><div class="bar-fill" style="width:71%"></div></div><span class="mono">71%</span></div><div class="mock-bar"><span>CC6 / Access controls</span><div class="bar-track"><div class="bar-fill" style="width:93%"></div></div><span class="mono">93%</span></div><div class="mock-bar"><span>CC7 / Operations</span><div class="bar-track"><div class="bar-fill" style="width:62%"></div></div><span class="mono">62%</span></div></div></div></article></section><section class="section"><div class="container"><div class="cta-panel"><div><h2>Start with the work in front of you.</h2><p>We will show you how Syncpoint maps to your systems and your audit timeline.</p></div><a href="#contact" class="button-dark">Request a demo →</a></div></div></section>
 <section id="security" class="page-hero"><div class="container"><p class="section-kicker">Security</p><h1>Trust is a system property, not a badge.</h1><p>Syncpoint is designed to make the security and accountability around your compliance work visible.</p></div></section>
@@ -263,10 +269,93 @@ button:disabled{opacity:.65;cursor:not-allowed}
 </div></main>
 <footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="#top" class="brand"><img class="logo-data" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic3luY3BvaW50R3JhZGllbnQiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNjM2NmYxIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhiNWNmNiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNzeW5jcG9pbnRHcmFkaWVudCkiLz4KICA8cGF0aCBkPSJNOSAyMCBMMTYgOCBMMjMgMjAgTDE5IDIwIEwxNiAxNCBMMTMgMjAgWiIgZmlsbD0iI2ZmZmZmZiIvPgo8L3N2Zz4=" alt="Syncpoint"><span class="brand-wordmark">Syncpoint <span>Compliance</span></span></a><p>Compliance infrastructure for engineering-led teams preparing for a real SOC 2 report.</p></div><div class="footer-col"><h2>Product</h2><a href="#product">Product</a><a href="#security">Security</a></div><div class="footer-col"><h2>Company</h2><a href="#about">About</a><a href="#contact">Contact</a></div><div class="footer-col"><h2>Legal</h2><a href="#privacy">Privacy Policy</a><a href="#terms">Terms of Service</a><a href="#security">Security</a></div></div><div class="footer-bottom"><span>© 2026 Syncpoint Compliance. All rights reserved.</span><span class="mono">Built for the work behind the report.</span></div></div></footer>
 <script>
-const toggle=document.getElementById('mobileToggle'), menu=document.getElementById('mobileNavigation');
-toggle.addEventListener('click',()=>{{const open=menu.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'✕':'☰';}});
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{{menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';}}));
-const form=document.getElementById('demo-form'), status=document.getElementById('formStatus'), btn=document.getElementById('submitButton');
-form.addEventListener('submit',async e=>{{e.preventDefault();btn.disabled=true;btn.textContent='Sending…';status.textContent='Sending…';try{{const r=await fetch('https://api.web3forms.com/submit',{{method:'POST',headers:{{Accept:'application/json'}},body:new FormData(form)}});const j=await r.json();if(!r.ok||!j.success)throw new Error();form.innerHTML='<div class="form-success" role="status"><strong>Thanks — we\'ll reply within one business day.</strong><span>We have your note and will get back to you within one business day.</span></div>'}}catch(err){{btn.disabled=false;btn.textContent='Request a demo →';status.className='form-error';status.textContent='Something went wrong. Please try again or email us directly.'}}}});
+(() => {
+  const toggle = document.getElementById('mobileToggle');
+  const menu = document.getElementById('mobileNavigation');
+
+  if (toggle && menu) {
+    const closeMenu = () => {
+      menu.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation menu');
+      toggle.textContent = '☰';
+    };
+
+    toggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const open = menu.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+      toggle.textContent = open ? '✕' : '☰';
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target) && !toggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+  }
+
+  const form = document.getElementById('demo-form');
+  const status = document.getElementById('formStatus');
+  const btn = document.getElementById('submitButton');
+
+  if (form && status && btn) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      status.className = '';
+      status.textContent = 'Sending…';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || 'Submission failed');
+        }
+
+        form.innerHTML = '<div class="form-success" role="status"><strong>Thanks — we’ll reply within one business day.</strong><span>We have your note and will get back to you within one business day.</span></div>';
+      } catch (error) {
+        btn.disabled = false;
+        btn.textContent = 'Request a demo →';
+        status.className = 'form-error';
+        status.textContent = 'Something went wrong. Please try again or email us directly.';
+        console.error('Demo form submission failed:', error);
+      }
+    });
+  }
+
+  // Prevent anchor jumps from hiding headings behind the sticky header.
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const targetId = link.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      event.preventDefault();
+      const header = document.querySelector('.site-header');
+      const offset = header ? header.offsetHeight + 18 : 18;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+
+      window.scrollTo({ top, behavior: 'smooth' });
+      history.replaceState(null, '', targetId);
+    });
+  });
+})();
 </script>
 </body></html>
